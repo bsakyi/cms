@@ -1,0 +1,2 @@
+class DoNothinYet < ApplicationRecord
+end
