@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_23_111705) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_26_164516) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,6 +29,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_23_111705) do
     t.integer "admin_user_id"
     t.integer "page_id"
     t.index ["admin_user_id", "page_id"], name: "index_admin_users_pages_on_admin_user_id_and_page_id"
+  end
+
+  create_table "copies", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name", limit: 25
+    t.boolean "visible", default: false
+    t.integer "position"
   end
 
   create_table "do_nothin_yets", force: :cascade do |t|

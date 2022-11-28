@@ -1,0 +1,32 @@
+<%= @page_title = "Subjects" %>
+<h1>Subjects#index</h1>
+ <div  class="subjects">
+    <%= link_to 'Add New Subject', new_subject_path %>
+    
+    <table class="table table-primary">
+    <thead>
+        <tr>
+        <th scope="col">Position</th>
+        <th scope="col">Name</th>
+        <th scope="col">Visible</th>
+        <th scope="col">Page Size</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @subjects.each do |subject| %>
+            <tr>
+                <td><%= subject.position %></td>
+                <td><%= subject.name %></td>
+                <td> <%= status_tag(subject.visible) %> </td>
+                <td> <%= subject.pages.size %></td>
+                <td><%= link_to 'Edit', edit_subject_path(subject) %> </td>
+                <td><%= link_to "Delete", subject, method: :delete %></td>
+            </tr>
+        <% end %>
+    </tbody>
+    </table>
+               
+</div> 
+        
