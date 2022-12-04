@@ -58,7 +58,7 @@ class PagesController < ApplicationController
   private 
 
   def set_page
-    @page = page.find(params[:id])
+    @page = Page.find(params[:id])
   end
 
 

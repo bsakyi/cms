@@ -1,2 +1,34 @@
-<h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
+<% @page_title = "Pages" %>
+<h1>pages#index</h1>
+ <div  class="pages">
+    <%= link_to 'Add New page', new_page_path %>
+    
+    <table class="table table-primary">
+    <thead>
+        <tr>
+        <th scope="col">Position</th>
+        <th scope="col">Name</th>
+        <th scope="col">Visible</th>
+        <th scope="col">Page Size</th>
+         <th scope="col">Show</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @pages.each do |page| %>
+            <tr>
+                <td><%= page.position %></td>
+                <td><%= page.name %></td>
+                <td> <%= status_tag(page.visible) %> </td>
+                
+                <td><%= link_to 'Show', page_path(page) %> </td>
+                <td><%= link_to 'Edit', edit_page_path(page) %> </td>
+                <td><%= link_to "Delete", page, method: :delete %></td>
+            </tr>
+        <% end %>
+    </tbody>
+    </table>
+               
+</div> 
+        

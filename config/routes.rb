@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'pages/edit'
   resources :copies
   resources :subjects 
+  resources :pages
   # get '/subjects', to: 'subjects#index'
   # get 'subjects/show'
   # get '/subjects/new', to: 'subjects#new'

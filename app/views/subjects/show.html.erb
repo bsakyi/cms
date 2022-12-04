@@ -1,2 +1,11 @@
 <h1>Subjects#show</h1>
 <p>Find me in app/views/subjects/show.html.erb</p>
+
+ 
+   Name: <%= @subject.name %> <br />
+   <p>Status: <%= status_tag(@subject.visible) %> </p> 
+   Size: <%= @subject.pages.size %><br />
+    
+    <%= link_to 'Edit', edit_subject_path(@subject) %> <br />
+    <%= link_to "Delete", @subject, method: :delete %>
+
