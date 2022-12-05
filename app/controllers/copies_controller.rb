@@ -1,6 +1,6 @@
 class CopiesController < ApplicationController
   before_action :set_copy, only: %i[ show edit update destroy ]
-
+ 
   # GET /copies or /copies.json
   def index
     @copies = Copy.all

@@ -12,7 +12,10 @@
     </div>
   <% end %>
   <% end %>
- 
+  <div class="field">
+    <%= form.label :subject_id, "Subject" %>
+    <%= form.select(:subject_id, @subjects.map {|s| [s.name, s.id]}) %>
+  </div>
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>

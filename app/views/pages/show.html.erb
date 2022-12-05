@@ -1,2 +1,19 @@
 <h1>Pages#show</h1>
 <p>Find me in app/views/pages/show.html.erb</p>
+
+
+
+Subject ID: <%= @page.subject_id %> <br />
+Name: <%= @page.name %> <br />
+Permalink: <%= @page.permalink %> <br />
+Position: <%= @page.position %> <br />
+<div>
+    Status: <%= status_tag(@page.visible) %> 
+</div>
+
+
+<%= link_to "Back", '/pages'  %> <br />.
+ <%= link_to 'Edit', edit_page_path(@page) %> <br />
+ <%= link_to "Delete", @page, method: :delete %>
+
+ 

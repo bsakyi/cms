@@ -11,7 +11,9 @@ class PagesController < ApplicationController
   end
 
   def new
-    @page = Page.new 
+    @page = Page.new({:name => "Default"})
+    @subjects = Subject.order('position ASC')
+    @page_count = Page.count + 1
   end 
 
   def create
@@ -19,9 +21,11 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to page_url(@page), notice: "page was successfully created." }
+        format.html { redirect_to(:action => 'index')}
         format.json { render :show, status: :created, location: @page }
       else
+        @subjects = Subject.order('position ASC')
+    @page_count = Page.count + 1
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @page.errors, status: :unprocessable_entity }
       end
@@ -34,6 +38,9 @@ class PagesController < ApplicationController
         format.html { redirect_to page_url(@page), notice: "page was successfully updated." }
         format.json { render :show, status: :ok, location: @page }
       else
+        @subjects = Subject.order('position ASC')
+        @page_count = Page.count
+        render('edit')
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @page.errors, status: :unprocessable_entity }
       end
@@ -41,7 +48,9 @@ class PagesController < ApplicationController
   end 
 
   def edit
-   
+    @page = Page.find(params[:id])
+    @subjects = Subject.order('position ASC')
+    @page_count = Page.count
   end 
 
  
@@ -53,6 +62,8 @@ class PagesController < ApplicationController
       format.json { head :no_content }
     end
   end
+ 
+
 
 
   private 
